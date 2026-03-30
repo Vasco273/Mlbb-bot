@@ -6,7 +6,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "MLBB Diamonds Bot မှ ကြိုဆိုပါတယ်ဗျာ!\n\nစျေးနှုန်းမေးမြန်းရန် /price ကို နှိပ်ပါ။")
+    bot.reply_to(message, "MLBB Diamonds Bot မှ ကြိုဆိုပါတယ်ဗျာ!\n\n"စျေးနှုန်းမေးမြန်းရန် /price ကို နှိပ်ပါ။")
 
 @bot.message_handler(commands=['price'])
 def send_price(message):
