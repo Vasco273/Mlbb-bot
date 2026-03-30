@@ -14,11 +14,11 @@ CURRENT_USD_RATE = 4800
 
 # Diamond USD prices
 DIAMOND_USD_PRICES = {
-    "86 Diamonds": 2.15,
-    "172 Diamonds": 3.30,
-    "257 Diamonds": 4.45,
-    "706 Diamonds": 10.20,
-    "Weekly Diamond Pass": 1.99
+    "86 Diamonds": 1.20,
+    "172 Diamonds": 2.38,
+    "257 Diamonds": 3.54,
+    "706 Diamonds": 9.28,
+    "Weekly Diamond Pass": 2.35
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -32,14 +32,13 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg += "👉 https://t.me/mgchanchannel\n"
     msg += "━━━━━━━━━━━━━━━━━━\n\n"
     
-    msg += f"📊 လက်ရှိသတ်မှတ်ဒေါ်လာဈေး: 1 USD = {current_rate} MMK\n"
     msg += "━━━━━━━━━━━━━━━━━━\n"
     msg += "💎 MLBB Diamond Price List 💎\n\n"
     
     for name, usd_price in DIAMOND_USD_PRICES.items():
         mmk_price = round(usd_price * current_rate)
         # ၁၀၀ ပြည့်အောင် ညှိခြင်း
-        final_price = (mmk_price + 50) // 100 * 100
+        final_price = (mmk_price + 500) // 200 * 100
         msg += f"🔹 {name} - {final_price:,} MMK\n"
     
     msg += "\n━━━━━━━━━━━━━━━━━━\n"
