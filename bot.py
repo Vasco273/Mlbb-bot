@@ -54,7 +54,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg += "\n━━━━━━━━━━━━━━━━━━\n"
     msg += "⚠️ ဈေးနှုန်းသည် ဒေါ်လာပေါက်ဈေးပေါ်မူတည်၍ အပြောင်းအလဲ ရှိနိုင်ပါသည်။"
     
-    await update.message.reply_text(msg)"
+    await update.message.reply_text(msg)
 
 if __name__ == '__main__':
     if TOKEN:
