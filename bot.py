@@ -39,7 +39,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
     current_rate = get_real_time_rate()
     
-    msg = f" လက်ရှိဒေါ်လာပေါက်ဈေး (ခန့်မှန်း): 1 USD = {၄၈၀၀}MMK\n"
+    msg = f" လက်ရှိဒေါ်လာပေါက်ဈေး (ခန့်မှန်း): 1 USD = {current_rate}MMK\n"
     msg += "━━━━━━━━━━━━━━━━━━\n"
     msg += " MLBB Diamond Price List\n\n"
     
