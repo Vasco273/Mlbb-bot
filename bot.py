@@ -32,25 +32,29 @@ def get_real_time_rate():
         return 5300
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("မင်္ဂလာပါ! ဈေးနှုန်းကြည့်ရန် /price ကို နှိပ်ပါ။")
-
-async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    current_rate = get_real_time_rate()
+    await update.message.reply_text(async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    current_rate = CURRENT_USD_RATE
     
-    msg = f"📊 လက်ရှိဒေါ်လာပေါက်ဈေး (ခန့်မှန်း): 1 USD = {current_rate} MMK\n"
+    # --- Channel Mg Chan Diamond  shopကနေကြိုဆိုပါတယ်(@MgChanDiamondBot) ---
+    join_msg = "📢 ကျွန်တော်တို့ရဲ့ Channel ကို join ထားပြီး နေ့စဉ်ဈေးနှုန်းတွေကို အမြန်ဆုံးကြည့်လိုက်ပါ!\n"
+    join_msg += "👉 t.me/your_channel_link\n"
+    join_msg += "━━━━━━━━━━━━━━━━━━\n\n"
+    # ---------------------------------------------------
+
+    msg = join_msg # ဖိတ်ခေါ်စာကို အရင်ဆုံးပြမယ်
+    msg += f"📊 လက်ရှိသတ်မှတ်ဒေါ်လာဈေး: 1 USD = {current_rate} MMK\n"
     msg += "━━━━━━━━━━━━━━━━━━\n"
     msg += "💎 MLBB Diamond Price List 💎\n\n"
     
     for name, usd_price in DIAMOND_USD_PRICES.items():
         mmk_price = round(usd_price * current_rate)
-        # ၁၀၀ ပြည့်အောင် ညှိခြင်း
         final_price = (mmk_price + 50) // 100 * 100
         msg += f"🔹 {name} - {final_price:,} MMK\n"
     
     msg += "\n━━━━━━━━━━━━━━━━━━\n"
     msg += "⚠️ ဈေးနှုန်းသည် ဒေါ်လာပေါက်ဈေးပေါ်မူတည်၍ အပြောင်းအလဲ ရှိနိုင်ပါသည်။"
     
-    await update.message.reply_text(msg)
+    await update.message.reply_text(msg)"
 
 if __name__ == '__main__':
     if TOKEN:
