@@ -39,9 +39,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
     current_rate = get_real_time_rate()
     
-    msg = f"📊 လက်ရှိဒေါ်လာပေါက်ဈေး (ခန့်မှန်း): 1 USD = {၄၈၀၀} MMK\n"
+    msg = f" လက်ရှိဒေါ်လာပေါက်ဈေး (ခန့်မှန်း): 1 USD = {၄၈၀၀}MMK\n"
     msg += "━━━━━━━━━━━━━━━━━━\n"
-    msg += " MLBB Diamond Price List \n\n"
+    msg += " MLBB Diamond Price List\n\n"
     
     for name, usd_price in DIAMOND_USD_PRICES.items():
         # မြန်မာကျပ်ငွေတွက်ချက်ခြင်း
@@ -49,11 +49,11 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # အနီးစပ်ဆုံး ၅၀ သို့မဟုတ် ၁၀၀ ပြည့်အောင် ညှိခြင်း (ဥပမာ ၂၀၄၃ ကို ၂၀၅၀ လုပ်ခြင်း)
         final_price = (mmk_price + 50) // 100 * 100
         
-        msg += f"🔹 {name} - {final_price:,} MMK\n"
+        msg += f"🔹 {name} - {final_price:,}MMK\n"
     
     msg += "\n━━━━━━━━━━━━━━━━━━\n"
-    msg += "⚠️ ဈေးနှုန်းသည် ဒေါ်လာပေါက်ဈေးပေါ်မူတည်၍ အပြောင်းအလဲ ရှိနိုင်ပါသည်။"
-    msg += "\nဝယ်ယူရန် ဆက်သွယ်ပါ - [သင့် Link/Ph ထည့်ရန်]"
+    msg += "ဈေးနှုန်းသည် ဒေါ်လာပေါက်ဈေးပေါ်မူတည်၍ အပြောင်းအလဲ ရှိနိုင်ပါသည်။"
+    msg += "\nဝယ်ယူရန် ဆက်သွယ်ပါ - [သင့် ဂိမ်းID(Server)ထည့်ရန်]"
     
     await update.message.reply_text(msg)
 
