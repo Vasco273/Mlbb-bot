@@ -32,7 +32,8 @@ def get_real_time_rate():
         return 5300
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text
+    (async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
     current_rate = CURRENT_USD_RATE
     
     # --- Channel Mg Chan Diamond  shopကနေကြိုဆိုပါတယ်(@MgChanDiamondBot) ---
