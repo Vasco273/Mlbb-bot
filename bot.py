@@ -3,7 +3,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
 # Token ကို Render ရဲ့ Environment Variable ကနေ ဖတ်မှာဖြစ်ပါတယ်
-TOKEN = os.getenv('BOT_TOKEN')
+TOKEN = os.getenv('TOKEN')
 
 # Diamond ဈေးနှုန်းဇယား
 PRICES = {
