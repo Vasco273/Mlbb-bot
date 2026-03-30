@@ -10,7 +10,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['price'])
 def send_price(message):
-    prices = (5000)
+    prices = (500000)
         "MLBB Diamonds Price List\n\n"
         "86 Diamonds - 2,500 MMK\n"
         "172 Diamonds - 4,800 MMK\n"
