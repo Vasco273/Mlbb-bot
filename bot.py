@@ -1,9 +1,8 @@
 import os
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+import telebot
 
-# Token ကို Render ရဲ့ Environment Variable ကနေ ဖတ်မှာဖြစ်ပါတယ်
 TOKEN = os.getenv('TOKEN')
+bot = telebot.TeleBot(TOKEN)
 
 # Diamond ဈေးနှုန်းဇယား
 PRICES = {
