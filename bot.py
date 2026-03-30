@@ -4,51 +4,41 @@ import logging
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 
-# Error logs ပြဖို့
+# Error logs ပြရန်
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
+# --- ဒီနေရာမှာ ဒေါ်လာဈေးကို ကိုယ်တိုင် ပြင်ပေးရုံပါပဲ ---
+CURRENT_USD_RATE = 4800 
+
 # Diamond USD prices
 DIAMOND_USD_PRICES = {
-    "86 Diamonds": 1.15,
-    "172 Diamonds": 2.30,
-    "257 Diamonds": 3.45,
-    "706 Diamonds": 9.20,
+    "86 Diamonds": 2.15,
+    "172 Diamonds": 3.30,
+    "257 Diamonds": 4.45,
+    "706 Diamonds": 10.20,
     "Weekly Diamond Pass": 1.99
 }
 
-def get_real_time_rate():
-    try:
-        url = "https://api.exchangerate-api.com/v4/latest/USD"
-        response = requests.get(url)
-        data = response.json()
-        official_rate = data['rates']['MMK']
-        # အပြင်ပေါက်ဈေးနှင့်ညှိရန် ၇၀၀ ကျပ် ပေါင်းထားသည်
-        market_rate = official_rate + 700 
-        return round(market_rate)
-    except Exception as e:
-        logging.error(f"Error fetching rate: {e}")
-        return 5300
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text
-    (async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("မင်္ဂလာပါ! ဈေးနှုန်းကြည့်ရန် /price ကို နှိပ်ပါ။")
+
+async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
     current_rate = CURRENT_USD_RATE
     
-    # --- Channel Mg Chan Diamond  shopကနေကြိုဆိုပါတယ်(@MgChanDiamondBot) ---
-    join_msg = "📢 ကျွန်တော်တို့ရဲ့ Channel ကို join ထားပြီး နေ့စဉ်ဈေးနှုန်းတွေကို အမြန်ဆုံးကြည့်လိုက်ပါ!\n"
-    join_msg += "👉 t.me/your_channel_link\n"
-    join_msg += "━━━━━━━━━━━━━━━━━━\n\n"
-    # ---------------------------------------------------
-
-    msg = join_msg # ဖိတ်ခေါ်စာကို အရင်ဆုံးပြမယ်
+    # Channel Mg Chan Diamond Shop ကနေကြိုဆိုပါတယ်(Link ကို သင့် Channel link နဲ့ လဲလိုက်ပါ)
+    msg = "📢 ကျွန်တော်တို့ရဲ့ Channel ကို join ထားပေးပါဦး!\n"
+    msg += "👉 https://t.me/mgchanchannel\n"
+    msg += "━━━━━━━━━━━━━━━━━━\n\n"
+    
     msg += f"📊 လက်ရှိသတ်မှတ်ဒေါ်လာဈေး: 1 USD = {current_rate} MMK\n"
     msg += "━━━━━━━━━━━━━━━━━━\n"
     msg += "💎 MLBB Diamond Price List 💎\n\n"
     
     for name, usd_price in DIAMOND_USD_PRICES.items():
         mmk_price = round(usd_price * current_rate)
+        # ၁၀၀ ပြည့်အောင် ညှိခြင်း
         final_price = (mmk_price + 50) // 100 * 100
         msg += f"🔹 {name} - {final_price:,} MMK\n"
     
@@ -65,3 +55,4 @@ if __name__ == '__main__':
         app.run_polling()
     else:
         print("No Token Found!")
+    
